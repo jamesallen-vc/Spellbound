@@ -1,0 +1,14 @@
+{
+  "name": "Kawaii Spell Stars",
+  "short_name": "Spell Stars",
+  "description": "A kawaii phonics spelling game for Queensland school kids using the Sounds-Write approach.",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#fff8f0",
+  "theme_color": "#ff85a1",
+  "icons": [
+    { "src": "icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any maskable" },
+    { "src": "icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable" }
+  ]
+}
