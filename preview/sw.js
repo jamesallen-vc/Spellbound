@@ -1,6 +1,6 @@
 const PREFIX = 'learning-preview-spelling-';
-const CACHE = PREFIX + 'v7';
-const ASSETS = ['./','./index.html','./classic.html','./app.css','./voice.js','./progress-view.js','./language-help.js','./progress-view.css','./adventure.css','./adventure.js','./capy-garden.png','./app.js','./content.js','./words.js','./manifest.json','./icon-192.png','./icon-512.png','./apple-touch-icon.png'];
+const CACHE = PREFIX + 'v8';
+const ASSETS = ['./','./index.html','./classic.html','./app.css','./voice.js','./progress-view.js','./language-help.js','./progress-view.css','./adventure.css','./adventure.js','./capy-garden-v2.png','./app.js','./content.js','./words.js','./manifest.json','./icon-192-v2.png','./icon-512-v2.png','./apple-touch-icon-v2.png'];
 const APP_ROOT = new URL(self.registration.scope);
 self.addEventListener('install', e => e.waitUntil(caches.open(CACHE).then(c=>c.addAll(ASSETS.map(asset=>new Request(new URL(asset,APP_ROOT),{cache:'reload'})))).then(()=>self.skipWaiting())));
 self.addEventListener('activate', e => e.waitUntil(caches.keys().then(keys=>Promise.all(keys.filter(k=>k.startsWith(PREFIX)&&k!==CACHE).map(k=>caches.delete(k)))).then(()=>self.clients.claim())));

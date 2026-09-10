@@ -45,7 +45,7 @@ function rememberWord(word) {
 }
 function wordGoal() { return dailyActive ? 3 : 5; }
 function coach(message) {
-  return `<aside class="capy-coach"><img src="capy-garden.png" alt="Capy, your word companion"><div><span class="eyebrow">Capy says</span><p>${esc(message)}</p></div></aside>`;
+  return `<aside class="capy-coach"><img src="capy-garden-v2.png" alt="Capy, your word companion"><div><span class="eyebrow">Capy says</span><p>${esc(message)}</p></div></aside>`;
 }
 function missionSteps(stage) {
   const at = ['spell', 'discover', 'create', 'done'].indexOf(stage);
@@ -60,7 +60,7 @@ function homeAdventure() {
   const completed = m?.stage === 'done';
   view(`<section class="adventure-topline"><span class="eyebrow">Your word world</span><div class="row"><span class="counter">✦ ${state.stars} stars</span><span class="counter">${streak()}-day streak</span></div></section>
     <section class="adventure-hero" aria-label="Today's adventure">
-      <img class="world-art" src="capy-garden.png" alt="Capy waits beside a magical river, with a treehouse and a little boat" fetchpriority="high">
+      <img class="world-art" src="capy-garden-v2.png" alt="Capy waits beside a magical river, with a treehouse and a little boat" fetchpriority="high">
       <div class="mission-card"><span class="eyebrow">${completed ? 'Today’s adventure · Complete' : 'Today’s adventure · About 5–8 minutes'}</span>
         <h1>${esc(place.title)}</h1><p>${completed ? 'Your explorer stamp is in your nook. There are more words to discover whenever you like.' : 'Capy’s ready. Bring a few words, follow your curiosity and make a little story.'}</p>
         ${missionSteps(m?.stage || 'spell')}
@@ -252,7 +252,7 @@ collection = function () {
   dailyActive = false;
   const themes = [['River', 0, '#147b73'], ['Ocean', 10, '#126baf'], ['Sunset', 25, '#ad481f'], ['Forest', 50, '#247443']];
   view(`<div class="section-title"><div><span class="eyebrow">Your words. Your stories. Your place.</span><h1>${esc(state.nookName)}</h1></div><span class="counter">✦ ${state.stars} stars</span></div>
-    <section class="nook-banner"><img src="capy-garden.png" alt="Capy’s riverside treehouse"><div><h2>Look what we’ve collected.</h2><p>${state.pocket.length} words · ${state.stories.length} adventure stories · ${state.badges.length} explorer stamps</p></div></section>
+    <section class="nook-banner"><img src="capy-garden-v2.png" alt="Capy’s riverside treehouse"><div><h2>Look what we’ve collected.</h2><p>${state.pocket.length} words · ${state.stories.length} adventure stories · ${state.badges.length} explorer stamps</p></div></section>
     <div class="adventure-columns"><section><h2>My word pocket</h2><p class="muted">Words you practised or discovered. Finding a word is the start of getting to know it.</p><div class="row word-pocket">${state.pocket.map(w => `<span class="word-chip">${esc(w)}</span>`).join('') || '<p>Your first word is waiting on an adventure.</p>'}</div>
     <h2>My story shelf</h2>${state.stories.length ? [...state.stories].reverse().map(s => `<details><summary>${esc(s.title)} <span class="muted">· ${s.date}</span></summary><p class="saved-story">${esc(s.text)}</p></details>`).join('') : '<p class="muted">Finish a daily adventure to save your first mini story here.</p>'}
     ${state.story ? `<details><summary>My story workshop draft</summary><p class="saved-story">${esc(state.story)}</p></details>` : ''}
@@ -274,7 +274,7 @@ grownups = function () {
 };
 wordHome = function () {
   dailyActive = false;
-  view(`<section class="nook-banner discovery-banner"><img src="capy-garden.png" alt="A river full of places to explore with Capy"><div><span class="eyebrow">Word discovery</span><h1>Follow the letters.</h1><p>Pick a place. Find five words. Bring your discoveries back to your nook.</p></div></section><div class="section-title"><h2>Where shall we go?</h2><span class="pill">No timer · Clues anytime</span></div><div class="rack-map">${WordRacks.map(([name, letters], i) => `<button class="rack-island" data-rack="${i}"><div class="row"><span class="island-number">${String(i+1).padStart(2,'0')}</span><span><strong>${name}</strong><small>${letters.length} letters to explore</small></span></div><div class="sample-tiles" aria-hidden="true">${letters.split('').map(l=>`<span>${l}</span>`).join('')}</div><span class="island-action">Let’s look around →</span></button>`).join('')}</div>${notice()}`, 'discovery');
+  view(`<section class="nook-banner discovery-banner"><img src="capy-garden-v2.png" alt="A river full of places to explore with Capy"><div><span class="eyebrow">Word discovery</span><h1>Follow the letters.</h1><p>Pick a place. Find five words. Bring your discoveries back to your nook.</p></div></section><div class="section-title"><h2>Where shall we go?</h2><span class="pill">No timer · Clues anytime</span></div><div class="rack-map">${WordRacks.map(([name, letters], i) => `<button class="rack-island" data-rack="${i}"><div class="row"><span class="island-number">${String(i+1).padStart(2,'0')}</span><span><strong>${name}</strong><small>${letters.length} letters to explore</small></span></div><div class="sample-tiles" aria-hidden="true">${letters.split('').map(l=>`<span>${l}</span>`).join('')}</div><span class="island-action">Let’s look around →</span></button>`).join('')}</div>${notice()}`, 'discovery');
   main.querySelectorAll('[data-rack]').forEach(b=>b.onclick=()=>{rack=WordRacks[Number(b.dataset.rack)][1].split('');found=[];used=[];built=[];wordAwarded=false;wordHelped=false;wordHint='';wordPlay()});
 };
 
